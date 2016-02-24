@@ -1,0 +1,26 @@
+package bluemarbel;
+
+import java.awt.Color;
+
+import javax.swing.JFrame;
+import javax.swing.JTextArea;
+
+public class CityInfoGUI extends JFrame{
+   private JTextArea infoArea = new JTextArea();
+   private JButton button_buy=new Button("Buy");
+   private JButton button_cancel=new Button("Cancel");
+   CityInfoGUI(){
+      super("CityInfo");
+      infoArea.setEnabled(false);
+      infoArea.setDisabledTextColor(Color.black);
+      infoArea.append("Land Name:" + "\n");
+      infoArea.append("Owner:" + "\n");
+      infoArea.append("Building Number:" + "\n" );
+      infoArea.append("Hotel Number:" + "\n");
+      infoArea.append("RentFee:" + "\n");
+      this.add(infoArea);
+      setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+      setBounds(50,100,200,180);
+      setVisible(true);
+   }
+}

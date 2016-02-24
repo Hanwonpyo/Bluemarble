@@ -1,0 +1,7 @@
+package bluemarbel;
+
+import javax.swing.JButton;
+
+public class City extends JButton{
+
+}

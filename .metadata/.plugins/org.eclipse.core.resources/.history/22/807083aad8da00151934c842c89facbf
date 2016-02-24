@@ -1,0 +1,9 @@
+package bluemarbel;
+
+public class JsonParser
+{
+	// 1.roll 버튼 클릭시 T/F, 숫자 받아오기  -> mapGUI에 숫자로 location 갱신 
+	// 2.location버튼 눌렀을때 
+	//
+	//
+}

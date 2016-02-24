@@ -1,0 +1,35 @@
+package bluemarbel;
+
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Color;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+public class CityInfoGUI extends JFrame{
+   private JTextArea infoArea = new JTextArea();
+   private JButton button_buy=new JButton("Buy");
+   private JButton button_cancel=new JButton("Cancel");
+   private JPanel panel_button=new JPanel();
+   CityInfoGUI(){
+      super("CityInfo");
+      infoArea.setEnabled(false);
+      infoArea.setDisabledTextColor(Color.black);
+      infoArea.append("Land Name:" + "\n");
+      infoArea.append("Owner:" + "\n");
+      infoArea.append("Building Number:" + "\n" );
+      infoArea.append("Hotel Number:" + "\n");
+      infoArea.append("RentFee:" + "\n");
+      panel_button.setLayout(new GridLayout(1,2));
+      panel_button.add(button_buy);
+      panel_button.add(button_cancel);
+      this.add(infoArea,BorderLayout.CENTER);
+      this.add(panel_button,BorderLayout.SOUTH);
+      setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+      setBounds(50,100,200,180);
+      setVisible(true);
+   }
+}

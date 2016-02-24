@@ -1,0 +1,42 @@
+package bluemarble;
+
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+public class main {
+
+   public static void main(String[] args) {
+      // TODO Auto-generated method stub
+      //loginGUI gui = new loginGUI();
+      
+        String id="han";
+          String ip="165.194.17.91";
+          Socket socket;
+
+         //private JSONObject data= new JSONObject();
+         
+        // private InputStream is;
+         //private DataInputStream dis;
+
+         
+       
+            id="han";
+            ip="165.194.17.190";
+            try {
+               socket = new Socket(ip,7777);
+          //     is=socket.getInputStream();
+          //     OutputStream out = socket.getOutputStream();
+           //    out.write(2);
+            //   int n = is.read();
+            //   dis=new DataInputStream(is);
+               //System.out.println("123asasfasf");
+            } catch (IOException ex) {
+               ex.printStackTrace();
+            }
+
+   }
+
+}
