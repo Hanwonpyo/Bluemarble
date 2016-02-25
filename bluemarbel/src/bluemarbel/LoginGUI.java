@@ -58,13 +58,9 @@ public class LoginGUI extends JFrame implements ActionListener {
 	}		
 	private void mergePanel() {
 		p4.setLayout(new FlowLayout());
-		p4.add(p1);;
+		p4.add(p1);
 		p4.add(p2);
 		p4.add(p5);
-		
-	}
-	public void temp()
-	{
 		
 	}
 	@Override

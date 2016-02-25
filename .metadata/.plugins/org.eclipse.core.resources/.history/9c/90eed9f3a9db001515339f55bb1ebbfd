@@ -1,0 +1,20 @@
+package bluemarbel;
+
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+
+public class Sender {
+	Socket socket;
+	private static Sender Sender = new Sender();
+	private OutputStream os;
+	private DataOutputStream dos;
+
+	public static Sender getInstance() {
+		return Sender;
+	}
+
+	public void setSocket(Socket socket) {
+		this.socket = socket;
+	}
+}

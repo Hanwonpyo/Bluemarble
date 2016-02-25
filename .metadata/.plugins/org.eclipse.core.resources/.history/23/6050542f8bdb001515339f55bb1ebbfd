@@ -1,0 +1,60 @@
+package bluemarbel;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.text.ParseException;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
+public class JsonParser
+{
+	
+	private JSONObject json_data=new JSONObject();
+	private JSONParser parser = new JSONParser();
+	private static JsonParser Json_parser= new JsonParser();
+	
+	private Socket socket;
+	
+	private InputStream is;
+	private DataInputStream dis;
+	private OutputStream os;
+	private DataOutputStream dos;
+	
+	public static JsonParser getInstance(){
+		return Json_parser;
+	}
+	public void parsing(String json_string){
+		
+		try {
+			json_data=new JSONObject();
+			json_data=(JSONObject)parser.parse(json_string);
+			try {
+				json_data=(JSONObject)parser.parse(json_string);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//code_check((String)json_data.get("code"),(String)json_data.get("body"));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+	
+	
+	
+	
+	
+	//json_Data=(JSONObject) parser.parse(json_string);
+	// 1. roll 버튼 클릭시 T/F, 숫자 받아오기  -> mapGUI에 숫자로 location 갱신 
+	// 2. City버튼 눌렀을때  cityInfoGUi 실행 
+	//                    City클래스로 정보 받아옴 
+	// 3. Buy버튼 눌렀을 떄, 시티정보랑 유저정보 받아와서 업데이트
+	// 4. 우주여행
+}

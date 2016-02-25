@@ -7,17 +7,28 @@ import java.awt.GridLayout;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JFrame;
 import javax.swing.*;
 
 public class roomGUI extends JFrame implements ActionListener{
 
 	private JPanel panel_main=new JPanel();
-	private JPanel panel_list=new JPanel();
 	private JTextArea area_user=new JTextArea();
 	private JButton button_start=new JButton("Start");
 	
+	private static roomGUI room= new roomGUI();
+	
+	public static roomGUI getInstance()
+	{
+		return room;
+	}
 	roomGUI()
+	{
+
+	}
+	public void makingGUI() throws InterruptedException
 	{
 		setPanel();
 		setButton();
@@ -41,11 +52,26 @@ public class roomGUI extends JFrame implements ActionListener{
 		area_user.setText("  User List  ");
 		this.add(area_user,BorderLayout.EAST);
 	}	
-	public void appendMessage(String name)
+	public void appendMessage(String[] user_list)
 	{
 		// TODO Auto-generated method stub
-		area_user.setText(name+"\n");
+		area_user.setText("");
+		for(int i=0;i<user_list.length;i++) {
+			area_user.append(user_list[i]+"\n");
+		}
 	}
+	/*
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			Reciver.getInstance().recive();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	*/
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub

@@ -14,43 +14,30 @@ public class Client {
 	private String id;
 	private String ip;
 	private Socket socket;
-
-	private JSONObject data= new JSONObject();
-	
-	private InputStream is;
-	private DataInputStream dis;
-	private OutputStream os;
-	private DataOutputStream dos;
-
 	
 	Client(String id,String ip)
 	{
 		this.id=id;
-		this.ip="165.194.33.133";
+		this.ip="165.194.17.190";
+		connect();
+	}
+	public void connect()
+	{
 		try {
-			socket = new Socket("165.194.33.133",7777);
-			is=socket.getInputStream();
+			socket = new Socket(ip,8000);
+			
 		} catch (IOException ex) {
 			ex.printStackTrace();
 		}
 		try {
+			Reciver.getInstance().setSocket(socket);
+			Sender.getInstance().setSocket(socket);
+			Sender.getInstance().send("client", id);
+			roomGUI.getInstance().makingGUI();
+			Reciver.getInstance().start();
 			
-			os = socket.getOutputStream();
-			dos = new DataOutputStream(os);
-			
-			send_message("client",id);
 		} catch (Exception e) {
-			}
-	}
-	public void send_message(String code, String body)
-	{
-		data.clear();
-		data.put("code", code);
-		data.put("body", body);
-		try {
-			dos.writeUTF(data.toJSONString());
-		} catch (IOException e) {
-		
+		  
 		}
 	}
 }

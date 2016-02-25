@@ -1,0 +1,16 @@
+package bluemarbel;
+
+import java.net.Socket;
+
+public class Sender {
+	Socket socket;
+	private static Sender Sender = new Sender();
+
+	public static Sender getInstance() {
+		return Sender;
+	}
+
+	public void setSocket(Socket socket) {
+		this.socket = socket;
+	}
+}

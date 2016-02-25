@@ -1,0 +1,36 @@
+package bluemarbel;
+
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
+
+import org.json.simple.JSONObject;
+
+public class Sender {
+	Socket socket;
+	private static Sender Sender = new Sender();
+	private OutputStream os;
+	private DataOutputStream dos;
+	
+	public static Sender getInstance() {
+		return Sender;
+	}
+
+	public void setSocket(Socket socket) {
+		this.socket = socket;
+	}
+	public void send(String code, String body)
+	{
+		System.out.println(code+" "+body);
+		JSONObject data= new JSONObject();
+		data.clear();
+		data.put("code", code);
+		data.put("body", body);
+		try {
+			dos.writeUTF(data.toJSONString());
+		} catch (IOException e) {
+		
+		}
+	}
+}

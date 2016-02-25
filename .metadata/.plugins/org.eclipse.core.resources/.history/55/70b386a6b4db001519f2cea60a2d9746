@@ -1,0 +1,70 @@
+package bluemarbel;
+
+import java.awt.Color;
+
+import org.json.simple.JSONObject;
+
+public class Selector {
+	
+	private static Selector selector= new Selector();
+	
+	public static Selector getInstance()
+	{
+		return selector;
+	}
+	
+	public void select(JSONObject data)
+	{
+		String code=(String)data.get("code");
+		System.out.println(code);
+		switch(code)
+		{
+		case "nameList" :
+			String []user_list=new String[4];
+			user_list[0]=(String) data.get("bodyOne");
+			user_list[1]=(String) data.get("bodyTwo");
+			user_list[2]=(String) data.get("bodyThree");
+			user_list[3]=(String) data.get("bodyFour");
+			roomGUI.getInstance().appendMessage(user_list);
+			break;
+		case "gameStart" :
+			mapGUI.getInstance().makingGUI();
+			break;
+		case "turn" :
+			mapGUI.getInstance().setButtonEnable();
+			break;
+		case "roll" :
+			String diceOne,diceTwo;
+			diceOne=(String)data.get("bodyOne");
+			diceTwo=(String)data.get("bodyTwo");
+			System.out.println(diceOne);
+			System.out.println(diceTwo);
+			mapGUI.getInstance().showDice(diceOne,diceTwo);
+			break;
+			//주사위숫자 2개줌
+		case "location":
+			String location,num_color;
+			num_color=(String)data.get("bodyOne");
+			location=(String)data.get("bodyTwo");
+	
+			mapGUI.getInstance().setButtonColor(location, matchColor(num_color));
+			break;
+		case "city":
+			num_color=(String)data.get("bodyOne");
+			location=(String)data.get("bodyTwo");
+			//바로띄움 사는창 or 지불창
+
+			break;
+		}
+	}
+	private Color matchColor(String num_color)
+	{
+		Color color=Color.WHITE;
+		System.out.println(num_color);
+		if(num_color=="0") color=Color.RED;
+		else if(num_color=="1") color=Color.BLUE;
+		else if(num_color=="2") color=Color.GREEN;
+		else if(num_color=="3") color=Color.YELLOW;
+		return color;
+	}
+}

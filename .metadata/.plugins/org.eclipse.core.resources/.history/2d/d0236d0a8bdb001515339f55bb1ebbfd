@@ -1,0 +1,11 @@
+package bluemarbel;
+
+import java.net.Socket;
+
+public class Reciver {
+	
+	public void setSocket(Socket socket)
+	{
+		this.socket=socket;
+	}
+}

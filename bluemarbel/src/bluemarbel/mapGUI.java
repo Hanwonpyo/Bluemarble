@@ -22,6 +22,13 @@ public class mapGUI extends JFrame implements ActionListener{
 	private JButton button_rolling=new JButton("Roll");
 	private JButton []button_city=new JButton[16];
 	
+	private static mapGUI map= new mapGUI();
+	
+	public static mapGUI getInstance()
+	{
+		return map;
+	}
+	
 	public void makingGUI()
 	{
 		setButton();
@@ -67,13 +74,16 @@ public class mapGUI extends JFrame implements ActionListener{
 		panel_main.add(button_city[13]);
 		panel_main.add(button_city[12]);
 	}
+	@SuppressWarnings("deprecation")
 	private void setButton()
 	{
 		for(int i=0;i<16;i++) {
 			button_city[i]=new JButton("City"+i);
+			button_city[i].setEnabled(false);
 			button_city[i].addActionListener(this);
 			button_city[i].setBackground(Color.WHITE);
 		}
+		button_rolling.setEnabled(false);
 		button_rolling.addActionListener(this);
 		
 	}
@@ -86,12 +96,13 @@ public class mapGUI extends JFrame implements ActionListener{
 		panel_center.add(button_rolling);
 		panel_list=new JPanel();
 		panel_list.add(userArea);
-	}
+	}	
+	@SuppressWarnings("deprecation")
 	private void setLabel()
 	{
 		for(int i=0;i<10;i++) {
 			label_list[i]=new JLabel("");
-			label_list[i].enable(false);
+			label_list[i].setEnabled(false);
 		}
 	}
 	private void setTextArea() {
@@ -102,30 +113,32 @@ public class mapGUI extends JFrame implements ActionListener{
 		diceArea.setAlignmentY(Component.CENTER_ALIGNMENT);
 		userArea=new JTextArea();
 		userArea.setText(" User List ");
+	}
+	public void setButtonColor(String location, Color color) {
+		System.out.println(location);
+		button_city[Integer.parseInt(location)].setBackground(color);
+		repaint();
+		setVisible(true);
 	}	
-	/*
-	public void setController(guiController control)
+	@SuppressWarnings("deprecation")
+	public void setButtonEnable()
 	{
-		this.gui_control=control;
+		button_rolling.setEnabled(true);
+		for(int i=0;i<16;i++)
+			button_city[i].setEnabled(false);
 	}
-	*/
-	public void turnMessage(String string) {
-		// TODO Auto-generated method stub
-		diceArea.setText(string);
+	public void showDice(String diceOne, String diceTwo) {
+		diceArea.setText(diceOne+" "+diceTwo);
 	}
-	
+
+	@SuppressWarnings("deprecation")
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		CityInfoGUI cityinfoGUI=new CityInfoGUI();
-		
+		if(e.getSource()==button_rolling) {
+			Sender.getInstance().send("dice","");
+			button_rolling.setEnabled(false);
+		}
 	}
-	public void setLocation(int number)
-	{
-		//button[number].
-		
-	}
-	public void setButtonColor(int location, Color color) {
-		button_city[location].setBackground(color);	
-	}
+
 }
